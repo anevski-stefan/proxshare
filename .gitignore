@@ -1,0 +1,33 @@
+# Secrets 
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+db-data/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+
+# Backend & worker
+backend/target/
+worker/target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs & temp
+*.log
+logs/
+tmp/
+*.swp
+*.swo
