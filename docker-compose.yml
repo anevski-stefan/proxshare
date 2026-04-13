@@ -6,7 +6,9 @@ services:
     env_file: ./.env
 
   backend:
-    build: ./backend
+    build: 
+      context: .
+      dockerfile: backend/Dockerfile
     depends_on:
       postgres:
         condition: service_healthy
@@ -22,7 +24,7 @@ services:
       - 5432:5432
     env_file: ./.env
     volumes:
-      - ./db-data/:/var/lib/postgresql/data/
+      - ./postgres-data/:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 30s
@@ -31,7 +33,9 @@ services:
       start_period: 40s
   
   worker:
-    build: ./worker
+    build: 
+      context: .
+      dockerfile: worker/Dockerfile
     depends_on:
       postgres:
         condition: service_healthy
@@ -57,5 +61,6 @@ services:
       start_period: 60s
 
 volumes:
+  postgres-data:
   rabbitmq-data:
   rabbitmq-logs:
