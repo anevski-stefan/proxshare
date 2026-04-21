@@ -6,7 +6,7 @@ CREATE TABLE files (
     original_filename VARCHAR(512) NOT NULL,
     mime_type VARCHAR(255) NOT NULL,
     size_bytes BIGINT NOT NULL,
-    status file_status NOT NULL,
+    file_status file_status NOT NULL,
     file_type file_type NOT NULL,
     storage_path VARCHAR(1024) NOT NULL,
     hls_path VARCHAR(1024) DEFAULT NULL,
@@ -17,4 +17,4 @@ CREATE TABLE files (
 );
 
 CREATE INDEX idx_files_expires_at ON files (expires_at);
-CREATE INDEX idx_files_status ON files (status);
+CREATE INDEX idx_files_status ON files (file_status);
